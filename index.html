@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>사다리 게임 🎲</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -17,37 +17,37 @@
       </div>
     </header>
 
-    <main>
-      <section class="board">
-        <div class="picks">
-          <button class="pick" data-start="1" id="pick1">1번</button>
-          <button class="pick" data-start="2" id="pick2">2번</button>
-        </div>
-        <canvas id="ladder" width="320" height="380"></canvas>
-      </section>
+    <section class="board">
+      <div class="picks">
+        <button class="pick" data-start="1" id="pick1">1번</button>
+        <button class="pick" data-start="2" id="pick2">2번</button>
+      </div>
+      <div class="stage">
+        <canvas id="ladder" width="320" height="300"></canvas>
+      </div>
+    </section>
 
-      <section class="panel">
-        <div class="bet-row">
-          <label for="bet">판돈</label>
-          <input id="bet" type="text" inputmode="numeric" value="10,000" />
-          <span class="won">원</span>
-        </div>
+    <section class="panel">
+      <div class="bet-row">
+        <label for="bet">판돈</label>
+        <input id="bet" type="text" inputmode="numeric" value="10,000" />
+        <span class="won">원</span>
+      </div>
 
-        <div class="chips">
-          <button class="chip" data-add="10000">+1만</button>
-          <button class="chip" data-add="50000">+5만</button>
-          <button class="chip" data-add="100000">+10만</button>
-          <button class="chip" data-add="1000000">+100만</button>
-          <button class="chip ghost" data-action="clear">초기화</button>
-          <button class="chip ghost" data-action="allin">올인</button>
-        </div>
+      <div class="chips">
+        <button class="chip" data-add="10000">+1만</button>
+        <button class="chip" data-add="50000">+5만</button>
+        <button class="chip" data-add="100000">+10만</button>
+        <button class="chip" data-add="1000000">+100만</button>
+        <button class="chip ghost" data-action="clear">초기화</button>
+        <button class="chip ghost" data-action="allin">올인</button>
+      </div>
 
-        <p class="hint">1번 또는 2번을 고르고 시작하세요. 당첨 칸에 도착하면 <b>2배!</b></p>
+      <p class="hint">1번/2번을 고르고 시작 · 당첨 칸 도착 시 <b>2배!</b></p>
 
-        <button id="start" class="start" disabled>시작하기</button>
-        <p id="message" class="message"></p>
-      </section>
-    </main>
+      <button id="start" class="start" disabled>시작하기</button>
+      <p id="message" class="message"></p>
+    </section>
   </div>
 
   <script src="script.js"></script>

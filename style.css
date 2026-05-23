@@ -2,6 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 :root {
@@ -20,28 +25,35 @@ body {
   font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   background: radial-gradient(circle at top, #15301f, var(--bg));
   color: var(--text);
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 16px;
+  align-items: center;
+  padding: 10px;
+  overflow: hidden;
+  touch-action: manipulation;
 }
 
 .game {
   width: 100%;
   max-width: 420px;
+  max-height: 100%;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 18px;
+  padding: 14px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
 }
 
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  flex: 0 0 auto;
 }
 
 .topbar h1 {
@@ -74,19 +86,32 @@ body {
   background: #0e1f17;
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 14px 10px;
-  margin-bottom: 16px;
+  padding: 12px 10px;
+  margin-bottom: 12px;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .picks {
   display: flex;
   gap: 10px;
   margin-bottom: 8px;
+  flex: 0 0 auto;
+}
+
+.stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pick {
   flex: 1;
-  padding: 12px 0;
+  padding: 10px 0;
   font-size: 16px;
   font-weight: 700;
   color: var(--text);
@@ -95,6 +120,8 @@ body {
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.15s ease;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .pick:hover:not(:disabled) {
@@ -114,15 +141,22 @@ body {
 
 canvas {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
+  aspect-ratio: 320 / 300;
+}
+
+.panel {
+  flex: 0 0 auto;
 }
 
 .panel .bet-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .bet-row label {
@@ -152,11 +186,11 @@ canvas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .chip {
-  padding: 10px 0;
+  padding: 9px 0;
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
@@ -165,6 +199,8 @@ canvas {
   border-radius: 9px;
   cursor: pointer;
   transition: all 0.12s ease;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .chip:hover:not(:disabled) {
@@ -177,10 +213,10 @@ canvas {
 }
 
 .hint {
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--muted);
   text-align: center;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .hint b {
@@ -189,7 +225,7 @@ canvas {
 
 .start {
   width: 100%;
-  padding: 16px 0;
+  padding: 14px 0;
   font-size: 18px;
   font-weight: 800;
   color: #1a1305;
@@ -198,6 +234,8 @@ canvas {
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.1s ease, opacity 0.15s ease;
+  touch-action: manipulation;
+  user-select: none;
 }
 
 .start:hover:not(:disabled) {
@@ -211,10 +249,10 @@ canvas {
 
 .message {
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
-  margin-top: 14px;
-  min-height: 24px;
+  margin-top: 10px;
+  min-height: 22px;
 }
 
 .message.win {
